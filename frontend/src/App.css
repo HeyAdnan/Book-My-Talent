@@ -23,7 +23,7 @@
     background-position: 100%;
   }
 }
-.login-show{
+.login-show {
   padding-top: 140px !important;
 }
 
@@ -42,6 +42,7 @@
   opacity: 1;
   text-decoration: none;
   font-weight: bolder;
+  background: black;
 }
 #myCarousel {
   max-height: 400px !important;
