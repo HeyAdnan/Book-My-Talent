@@ -2,11 +2,13 @@ const { model, Schema } = require('../connection');
 
 const mySchema = new Schema({
     title : String,
+    artist: String,
     category : String,
-    image : String,
+    capacity : Number,
     price : Number,
-    rating : Number,
-    reviews: Number
+    image: String,
+    createdAt : Date,
+    showdate : Date
 });
 
-module.exports = model( 'products', mySchema );
+module.exports = model( 'show', mySchema );

@@ -1,15 +1,22 @@
 const express = require("express");
-const Model = require("../models/productModel");
-
+const Model = require("../models/showModel");
 const router = express.Router();
-
 router.post("/add", (req, res) => {
   console.log(req.body);
-
-  new Model(req.body)
-    .save()
+  Model.findOne(req.body)
     .then((result) => {
-      res.json(result);
+      if (result !== null) res.status(401).send({ message: "Already exist" });
+      else {
+        new Model(req.body)
+          .save()
+          .then((result) => {
+            res.json(result);
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -27,8 +34,6 @@ router.get("/getall", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
 router.get("/getbyid/:id", (req, res) => {
   Model.findById(req.params.id)
     .then((result) => {
@@ -41,7 +46,6 @@ router.get("/getbyid/:id", (req, res) => {
 });
 
 router.put("/update/:id", (req, res) => {
-
   Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((result) => {
       res.json(result);
@@ -52,20 +56,16 @@ router.put("/update/:id", (req, res) => {
     });
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   Model.findByIdAndDelete(req.params.id)
-  .then((result) => {
-    res.json(result);
-  }).catch((err) => {
+    .then((result) => {
+      setTimeout(() => {
+        res.json(result);
+      }, 2000);
+    })
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-  });  
-})
-
-
-// getall
-// getbyemail
-// getbyid
-// update
-
+    });
+});
 module.exports = router;
