@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 const Footer = () => {
     const iconsize = 30 ;
   return (
-    <footer className="container-fluid p-3 bg-dark">
+    <footer className="container-fluid p-3 bg-dark h-100">
       <div className="footer-content">
         <div className="social-icons text-center mb-2">
           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className='mx-3'>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ReactCardFlip from "react-card-flip";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const Card = ({ show }) => {
   const container = {
@@ -96,7 +97,7 @@ const Browse = () => {
   const [selOptions, setSelOptions] = useState([]);
   const [showdata, setShowdata] = useState([]);
   const container = {
-    hidden: { opacity: 1, scale: 0 },
+    hidden: { opacity: 1, scale: 1 },
     visible: {
       opacity: 1,
       scale: 1,
@@ -165,80 +166,83 @@ const Browse = () => {
     );
   }, [selOptions]);
   return (
-    <div className="container-fluid p-0">
-      <header className="head bg-dark">
-        <div className="container py-5">
-          <h1 className="text-center mb-4">Browse Show</h1>
+    <>
+      <div className="container-fluid p-0 h-100">
+        <header className="head bg-dark">
+          <div className="container py-5">
+            <h1 className="text-center mb-4">Browse Show</h1>
 
-          <input
-            type="text"
-            placeholder="EnterArtist "
-            className="form-control"
-            onChange={searchShow}
-          />
+            <input
+              type="text"
+              placeholder="EnterArtist "
+              className="form-control"
+              onChange={searchShow}
+            />
 
-          <div className="row mt-4">
-            <div className="col-md-4">
-              <select className="form-control" onChange={filterCategory}>
-                <option value="">Select Category</option>
-                {category.map((b) => (
-                  <option value={b}>{b}</option>
-                ))}
-              </select>
-            </div>
+            <div className="row mt-4">
+              <div className="col-md-4">
+                <select className="form-control" onChange={filterCategory}>
+                  <option value="">Select Category</option>
+                  {category.map((b) => (
+                    <option value={b}>{b}</option>
+                  ))}
+                </select>
+              </div>
 
-            <div className="col-md-4 my-auto">
-              <input
-                checked={selOptions.includes("Music")}
-                onClick={() => {
-                  selectOption("Music");
-                }}
-                className="form-check-input"
-                type="checkbox"
-              />{" "}
-              Music&nbsp;&nbsp;&nbsp;
-              <input
-                checked={selOptions.includes("Dance")}
-                onClick={() => {
-                  selectOption("Dance");
-                }}
-                className="form-check-input"
-                type="checkbox"
-              />{" "}
-              Dance&nbsp;&nbsp;&nbsp;
-              <input
-                checked={selOptions.includes("Play")}
-                onClick={() => {
-                  selectOption("Play");
-                }}
-                className="form-check-input"
-                type="checkbox"
-              />{" "}
-              Play&nbsp;&nbsp;&nbsp;
-              <input
-                checked={selOptions.includes("Magic")}
-                onClick={() => {
-                  selectOption("Magic");
-                }}
-                className="form-check-input"
-                type="checkbox"
-              />{" "}
-              Magic&nbsp;&nbsp;&nbsp;
+              <div className="col-md-4 my-auto">
+                <input
+                  checked={selOptions.includes("Music")}
+                  onClick={() => {
+                    selectOption("Music");
+                  }}
+                  className="form-check-input"
+                  type="checkbox"
+                />{" "}
+                Music&nbsp;&nbsp;&nbsp;
+                <input
+                  checked={selOptions.includes("Dance")}
+                  onClick={() => {
+                    selectOption("Dance");
+                  }}
+                  className="form-check-input"
+                  type="checkbox"
+                />{" "}
+                Dance&nbsp;&nbsp;&nbsp;
+                <input
+                  checked={selOptions.includes("Play")}
+                  onClick={() => {
+                    selectOption("Play");
+                  }}
+                  className="form-check-input"
+                  type="checkbox"
+                />{" "}
+                Play&nbsp;&nbsp;&nbsp;
+                <input
+                  checked={selOptions.includes("Magic")}
+                  onClick={() => {
+                    selectOption("Magic");
+                  }}
+                  className="form-check-input"
+                  type="checkbox"
+                />{" "}
+                Magic&nbsp;&nbsp;&nbsp;
+              </div>
             </div>
           </div>
-        </div>
-      </header>{" "}
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="row mx-auto addshowbg"
-      >
-        {showdata.map((show, index) => {
-          return <Card show={show} key={`card-${index}`} />;
-        })}
-      </motion.div>
-    </div>
+        </header>{" "}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          className="row mx-auto addshowbg"
+        >
+          {showdata.map((show, index) => {
+            return <Card show={show} key={`card-${index}`} />;
+          })}
+        </motion.div>
+      </div>
+      <Footer />
+    </>
   );
 };
 export default Browse;

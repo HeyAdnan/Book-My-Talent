@@ -1,8 +1,33 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import Footer from "./Footer";
 
 const Home = () => {
+  const text = "Top Categories";
+  const ctrls = useAnimation();
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+  });
+  const wordAnimation = {
+    hidden: {},
+    visible: {},
+  };
+  const characterAnimation = {
+    hidden: {
+      opacity: 0,
+      y: `0.25em`,
+    },
+    visible: {
+      opacity: 1,
+      y: `0em`,
+      transition: {
+        duration: 1,
+        ease: [0.2, 0.65, 0.3, 0.9],
+      },
+    },
+  };
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -22,6 +47,14 @@ const Home = () => {
       opacity: 1,
     },
   };
+  useEffect(() => {
+    if (inView) {
+      ctrls.start("visible");
+    }
+    if (!inView) {
+      ctrls.start("hidden");
+    }
+  }, [ctrls, inView]);
   return (
     <>
       <div className="bg-dark">
@@ -89,8 +122,39 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <div className="container-fluid ">
-        <h2 className="my-3">Top Categories</h2>
+      <div className="container-fluid vh-100 ">
+        <motion.h2 className="my-3" aria-label={text} role="heading">
+          {text.split("").map((word, index) => (
+            <motion.span
+              ref={ref}
+              aria-hidden="true"
+              key={index}
+              initial="hidden"
+              animate={ctrls}
+              variants={wordAnimation}
+              transition={{
+                delayChildren: index * 0.25,
+                staggerChildren: 0.05,
+              }}
+              style={{
+                display: "inline-block",
+                "margin-right": "0.25em",
+                "white-space": "nowrap",
+              }}
+            >
+              {word.split("").map((character, index) => (
+                <motion.span
+                  aria-hidden="true"
+                  key={index}
+                  variants={characterAnimation}
+                  style={{ display: "inline-block", "margin-right": "-0.05em" }}
+                >
+                  {character}
+                </motion.span>
+              ))}
+            </motion.span>
+          ))}
+        </motion.h2>
         <motion.div
           variants={container}
           initial="hidden"
@@ -99,10 +163,10 @@ const Home = () => {
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.8}}
+            whileTap={{ scale: 0.8 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             variants={item}
-            className="col-md-3 mx-auto my-2"
+            className="col-sm-6 col-md-3 mx-auto my-2"
           >
             <div className="card">
               <img
@@ -116,7 +180,7 @@ const Home = () => {
             whileTap={{ scale: 0.8 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             variants={item}
-            className="col-md-3 mx-auto my-2"
+            className="col-sm-6 col-md-3 mx-auto my-2"
           >
             <div className="card">
               <img
@@ -130,7 +194,7 @@ const Home = () => {
             whileTap={{ scale: 0.8 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             variants={item}
-            className="col-md-3 mx-auto my-2 "
+            className="col-sm-6 col-md-3 mx-auto my-2 "
           >
             <div className="card">
               <img
@@ -144,7 +208,7 @@ const Home = () => {
             whileTap={{ scale: 0.8 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             variants={item}
-            className="col-md-3 mx-auto my-2 "
+            className="col-sm-6 col-md-3 mx-auto my-2 "
           >
             <div className="card">
               <img
@@ -155,7 +219,7 @@ const Home = () => {
           </motion.div>
         </motion.div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
