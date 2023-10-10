@@ -12,10 +12,11 @@ import ManageUser from "./components/ManageUser.jsx";
 import UpdateUser from "./components/UpdateUser";
 import NotFound from "./components/NotFound";
 import Addshow from "./components/Addshow";
+import ShowDetails from "./components/showDetails";
 
 function App() {
   return (
-    <div>
+    <div className="m-0">
       <Toaster position="top center" />
       <BrowserRouter>
         <AppProvider>
@@ -44,6 +45,7 @@ function App() {
               path="/manageuser"
             />
             <Route element={<UpdateUser />} path="/updateuser/:id" />
+            <Route element={<ShowDetails />} path="/showdetails/:id" />
             <Route element={<NotFound />} path="*" />
           </Routes>
         </AppProvider>

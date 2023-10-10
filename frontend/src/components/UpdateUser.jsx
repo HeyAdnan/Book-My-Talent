@@ -10,7 +10,7 @@ const UpdateUser = () => {
 
   const [userData, setUserData] = useState(null);
 
-  const fetchUserData = async () => {
+  const   fetchUserData = async () => {
     const res = await fetch(`http://localhost:5000/user/getbyid/${id}`);
     if (res.status === 200) {
       const data = await res.json();

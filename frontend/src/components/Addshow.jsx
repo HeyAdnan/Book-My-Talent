@@ -12,6 +12,7 @@ const showSchema = Yup.object().shape({
   artist: Yup.string().required("Artist id is required"),
   capacity: Yup.number().required("Enter Capacity"),
   price: Yup.number().required("Enter Price"),
+  category : Yup.string().required("Select any of the given category")
 });
 const Addshow = () => {
   const [selFile, setSelFile] = useState("");
@@ -65,7 +66,7 @@ const Addshow = () => {
     console.log(file.name);
     fd.append("myfile", file);
 
-    const res = await fetch("http://localhost:5000/util/uploadfile", {
+      const res = await fetch("http://localhost:5000/util/uploadfile", {
       method: "POST",
       body: fd,
     });
@@ -131,6 +132,7 @@ const Addshow = () => {
                     onChange={showform.handleChange}
                     value={showform.values.category}
                   >
+                    <option value="">Select Category</option>
                     <option value="Music">Music</option>
                     <option value="Dance">Dance</option>
                     <option value="Play">Play</option>
@@ -183,7 +185,7 @@ const Addshow = () => {
                     {showform.touched.showdate && showform.errors.showdate}
                   </span>
                   <input
-                    type="date"
+                    type="datetime-local"
                     className="form-control mb-4"
                     id="showdate"
                     onChange={showform.handleChange}

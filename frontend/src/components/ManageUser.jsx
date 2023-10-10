@@ -54,7 +54,7 @@ const ManageUser = () => {
       <div className="container py-5">
         <h1 className="text-center">Manage Users</h1>
 
-        <table className="table table-dark">
+        <table className="table table-dark rounded">
           <thead>
             <tr>
               <th>ID</th>

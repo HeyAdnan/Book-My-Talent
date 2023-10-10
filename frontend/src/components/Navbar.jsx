@@ -18,7 +18,7 @@ const Navbar = () => {
               Logout
             </button>
           </li>
-          <a><li >{currentUser.avatar ==="" ? (<hr/>):<img className="img-fluid ms-3 rounded-pill " src={`http://localhost:3000/${currentUser.avatar}`} alt="not found"/>}</li></a>
+          <a><li >{currentUser.avatar ==="" ? (<hr/>):<img className="img-fluid ms-3 rounded-pill " src={`http://localhost:5000/${currentUser.avatar}`} alt="not found"/>}</li></a>
         </>
       );
     } else {
@@ -78,11 +78,12 @@ const Navbar = () => {
                 Browse Shows
               </NavLink>
             </li>
+            {loggedin &&
             <li className="nav-item">
               <NavLink className="nav-link" to="/manageuser">
                 Manage User
               </NavLink>
-            </li>
+            </li>}
           </ul>
 
           <ul className="navbar-nav ms-auto mt-2 mb-lg-0 sec-ul">
