@@ -18,7 +18,7 @@ const Navbar = () => {
               Logout
             </button>
           </li>
-          <a><li >{currentUser.avatar ==="" ? (<hr/>):<img className="img-fluid ms-3 rounded-pill " src={`http://localhost:5000/${currentUser.avatar}`} alt="not found"/>}</li></a>
+          <a><li >{currentUser?.avatar ==="" ? (<hr/>):<img className="img-fluid ms-3 rounded-pill " src={`http://localhost:5000/${currentUser.avatar}`} alt="not found"/>}</li></a>
         </>
       );
     } else {
