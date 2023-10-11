@@ -59,44 +59,42 @@ const Home = () => {
   }, [ctrls, inView]);
   useEffect(() => {
     ScrollReveal().reveal(".headline", {
-      origin: 'bottom',
-      distance: '20px',
-      duration: 800,
+      origin: "bottom",
+      distance: "20px",
+      duration: 900,
       delay: 200,
-      easing: 'cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-      reset:true,
+      easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+      reset: true,
     });
     ScrollReveal().reveal(".top-cat", {
-      origin: 'bottom',
-      distance: '20px',
+      origin: "bottom",
+      distance: "20px",
       duration: 800,
       delay: 200,
-      easing: 'cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-      reset: true,
-      
-    });
-    ScrollReveal().reveal(".tagline", {
-      origin: 'right',
-      distance: '20px',
-      duration: 1000,
-      delay: 400,
-      easing: 'cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-      reset:true,
-    });
-    ScrollReveal().reveal(".gif", {
-      origin: 'right',
-      distance: '20px',
-      duration: 800,
-      delay: 600,
-      easing: 'cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+      easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
      
     });
+    ScrollReveal().reveal(".tagline", {
+      origin: "right",
+      distance: "20px",
+      duration: 1000,
+      delay: 300,
+      easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+      reset: true,
+    });
+    ScrollReveal().reveal(".gif", {
+      origin: "right",
+      distance: "20px",
+      duration: 1300,
+      delay: 600,
+      easing: "cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+    });
     return () => ScrollReveal().destroy();
-  },[]);
+  }, []);
 
   return (
     <>
-      <div className="bg-dark">
+      <div className="caro">
         <div id="myCarousel" className="carousel slide " data-ride="carousel">
           <div className="carousel-inner">
             <a>
@@ -162,6 +160,7 @@ const Home = () => {
         </div>
       </div>
       <div className="container-fluid h-100 ">
+        <strong>
         <motion.h2 className="my-3 top-cat" aria-label={text} role="heading">
           {text.split("").map((word, index) => (
             <motion.span
@@ -194,6 +193,7 @@ const Home = () => {
             </motion.span>
           ))}
         </motion.h2>
+        </strong>
         <motion.div
           variants={container}
           initial="hidden"
@@ -349,13 +349,16 @@ const Home = () => {
         </motion.div>
         <section class="py-4 py-xl-5">
           <div class="row d-flex justify-content-between">
-            <div className="col-md-6">
+            <div className="col-md-6 d-flex align-items-center">
               <img src="feedback.gif" className="gif" alt="" />
             </div>
             <div class="col-md-6 feed-form">
               <div class="card border-0 mb-5">
                 <div class="card-body p-sm-5">
-                  <h2 class="text-center mb-4">Contact us</h2>
+                  <strong>
+                    {" "}
+                    <h1 class="text-center mb-4">Contact us</h1>
+                  </strong>
                   <form method="post">
                     <div class="mb-3">
                       <input

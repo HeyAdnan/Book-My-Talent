@@ -137,5 +137,11 @@
   padding-top: 7rem;
   padding-bottom: 7rem;
 }
+.caro{
+  background: linear-gradient(45deg, #ffffff 25%, transparent 25%), linear-gradient(315deg, #ffffff 25%, transparent 25%) ,linear-gradient(45deg, transparent 24%,#ccccdb 25%, #ccccdb 30%, transparent 31%, transparent 39%,#ccccdb 40%, #ccccdb 45%, transparent 45%),linear-gradient(315deg, transparent 24%,#ccccdb 25%, #ccccdb 30%, transparent 31%, transparent 39%,#ccccdb 40%, #ccccdb 45%, transparent 45%);
+  background-size: 5em 5em;
+  background-color: #ffffff;
+  opacity: 1
+}
 
 
