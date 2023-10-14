@@ -17,8 +17,4 @@ The Showcase Website is a talent showcase and event booking platform. It enables
 ### Demo
 
 Check out the demo video to see "ShowCase" in action:
-<video width="640" height="360" controls>
-
-  <source src="video_url_here" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[![Project Demo]](https://youtu.be/ny57UCybUQQ?si=RJunfxxr94Z9bcqY)
