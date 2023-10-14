@@ -1,6 +1,6 @@
 # Showcase Website
 
-![Showcase Website Banner](./public/favicon.ico)
+![Showcase Website Banner](./public/Showcase.png)
 
 ## Introduction
 
